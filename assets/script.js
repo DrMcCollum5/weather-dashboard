@@ -97,3 +97,52 @@ var getUvIndex = function(lat,lon){
     //console.log(lat);
     //console.log(lon);
 }
+var displayUvIndex = function(index){
+    var uvIndexEl = document.createElement("div");
+    uvIndexEl.textContent = "UV Index: "
+    uvIndexEl.classList = "list-group-item"
+
+    uvIndexValue = document.createElement("span")
+    uvIndexValue.textContent = index.value
+
+    if(index.value <=2){
+        uvIndexValue.classList = "favorable"
+    }else if(index.value >2 && index.value<=8){
+        uvIndexValue.classList = "moderate "
+    }
+    else if(index.value >8){
+        uvIndexValue.classList = "severe"
+    };
+
+    uvIndexEl.appendChild(uvIndexValue);
+
+    //append index to current weather
+    weatherContainerEl.appendChild(uvIndexEl);
+}
+
+var get5Day = function(city){
+    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+           display5Day(data);
+        });
+    });
+};
+
+var display5Day = function(weather){
+    forecastContainerEl.textContent = ""
+    forecastTitle.textContent = "5-Day Forecast:";
+
+    var forecast = weather.list;
+        for(var i=5; i < forecast.length; i=i+8){
+       var dailyForecast = forecast[i];
+        
+       
+       var forecastEl=document.createElement("div");
+       forecastEl.classList = "card bg-primary text-light m-2";
+
+       //console.log(dailyForecast)
+       
