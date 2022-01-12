@@ -1,31 +1,24 @@
-var api = "68f441a7850cce87d500e391411afce2"
+var cities = [];
 
+var cityFormEl=document.querySelector("#city-search-form");
+var cityInputEl=document.querySelector("#city");
+var weatherContainerEl=document.querySelector("#current-weather-container");
+var citySearchInputEl = document.querySelector("#searched-city");
+var forecastTitle = document.querySelector("#forecast");
+var forecastContainerEl = document.querySelector("#fiveday-container");
+var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 
-
-    // Function
-function getLatLong () {
-    var latLong = "https://api.openweathermap.org/data/2.5/weather?q=atlanta&appid=68f441a7850cce87d500e391411afce2"
-    //1. Call to the api url
-    fetch (latLong)
-    //2. Ask for the data to use JSON format
-    .then(function(res){
-        return res.json();
-    }).then(function(data){
-        // 3. ACTION - anything you want to do with the data, do it here!
-
-        console.log("LATITUDE: ", data.coord.lat);
-
-        getforecast(data.coord.lat, data.coord.lon)
-    })
-};
-function getforecast (lat, lon) {
-    var makeItRain = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=68f441a7850cce87d500e391411afce2`;
-    fetch (makeItRain)
-    .then(function(res){
-        return res.json ();
-        })
-        .then (function (data){
-console.log (data)
-        })
+var formSumbitHandler = function(event){
+    event.preventDefault();
+    var city = cityInputEl.value.trim();
+    if(city){
+        getCityWeather(city);
+        get5Day(city);
+        cities.unshift({city});
+        cityInputEl.value = "";
+    } else{
+        alert("Please enter a City");
+    }
+    saveSearch();
+    pastSearch(city);
 }
-getLatLong()
