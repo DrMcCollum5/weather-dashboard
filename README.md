@@ -1,4 +1,4 @@
-# weather-dashboard
+# Weather-Dashboard
 weather-dashboard
 # User Story 
 - AS A traveler
