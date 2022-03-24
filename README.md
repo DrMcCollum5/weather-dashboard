@@ -11,4 +11,6 @@ It will display the the city name, the date, an icon representation of weather c
 The UV index will be color coded. Whether the conditions are favorable, moderate, or severe.
 With a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity.
 Search history will be saved in local storage.
-This weather daskboard app is mobile compatible.
+This weather dashboard app is mobile compatible.
+
+# Screenshot
