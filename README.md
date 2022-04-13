@@ -1,7 +1,7 @@
 # Weather-Dashboard
 Weather-dashboard
 # User Story 
-- AS A traveler
+- As a traveler
 - I WANT to see the weather outlook for multiple cities
 - SO THAT I can plan a trip accordingly
 
